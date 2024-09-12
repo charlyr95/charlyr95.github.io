@@ -351,16 +351,16 @@ header {
     border-bottom: 4px solid #00ffcc;
     position: relative;
     overflow: hidden;
-    transition: background 0.5s ease-in-out; /* Transición asegurada para Chrome */
+    transition: background 1.5s ease-in-out; /* Animación más lenta */
     user-select: none; /* Deshabilitar selección de texto */
 }
 
 header:hover {
-    background: linear-gradient(135deg, #00ffcc, #1a1a1a); /* Degradado al pasar el mouse */
+    background: linear-gradient(135deg, #00ffcc90, #1a1a1a); /* Efecto degradado */
 }
 
 header h1 {
-    font-size: 48px;
+    font-size: 4rem; /* Ajustado para que no domine el texto */
     font-family: 'Fira Code', monospace;
     color: #00ffcc;
     text-transform: uppercase;
@@ -371,8 +371,14 @@ header h1 {
 }
 
 header h1 span {
+    font-size: 2rem; /* Tamaño mayor pero no más llamativo que "Web Developer" */
     color: #ffffff;
-    animation: glow 1.5s ease-in-out infinite alternate;
+    /* animation: glow 0.1s ease-in-out infinite alternate; */
+    /* transition: transform 0.0s ease-in-out; */
+}
+
+header h1:hover span {
+    transform: scale(1.05); /* Efecto sutil al pasar el mouse sobre el nombre */
 }
 
 header::before {
@@ -382,22 +388,22 @@ header::before {
     left: -50%;
     width: 200%;
     height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(0, 255, 204, 0.15), transparent); /* Menos desenfoque */
-    animation: shine 3s infinite;
+    background: linear-gradient(120deg, transparent, rgba(0, 255, 204, 0.134), transparent); 
+    animation: shine 30s infinite;
 }
 
 @keyframes text-glow {
     from {
-        text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 15px #00ffcc; /* Menos desenfoque */
+        text-shadow: 0 0 0px #00ffcc, 0 0 0px #00ffcc, 0 0 0px #00ffcc;
     }
     to {
-        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 25px #00ffcc;
+        text-shadow: 0 0 0px #00ffcc, 0 0 0px #00ffcc, 0 0 0px #00ffcc;
     }
 }
 
 @keyframes glow {
     from {
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff; /* Menos desenfoque */
+        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
     }
     to {
         text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 25px #ffffff;
@@ -419,10 +425,9 @@ header::before {
 header h1:hover {
     color: #ffffff;
     cursor: pointer;
-    transition: color 0.3s ease; /* Transición suave del color del texto */
+    transition: color 0.3s ease;
 }
 
 header h1:hover span {
     color: #00ffcc;
 }
-

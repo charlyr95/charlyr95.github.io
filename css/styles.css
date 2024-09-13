@@ -1,41 +1,101 @@
-:root{
+:root {
     --blanco: #FFFFFF;
     --oscuro: #212121;
+    --fondo-header: #1a1a1a;
+    --color-enlace: #00ffcc;
+    --color-enlace-hover: #00b3a6;
+    --color-texto: #eeeeee;
+    --color-borde: #00ffcc;
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 html {
-    background-color:rgb(19, 19, 19) ;
-    font-size: 62.5%;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(19, 19, 19);
+    font-size: 62.5%; /* 1rem = 10px */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(214, 214, 214);
     text-align: center;
-    box-sizing: border-box;
     user-select: none; /* Deshabilitar selección de texto */
-}
-
-*, *:before, *:after {
-    box-sizing: border-box;
 }
 
 body {
     font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--fondo-header);
+    text-align: center;
+    padding: 20px 20px;
+    border-bottom: 4px solid var(--color-borde);
+    position: relative;
+    overflow: hidden;
+    transition: background 1.5s ease-in-out; /* Animación más lenta */
+}
+
+header:hover {
+    background: linear-gradient(135deg, var(--color-enlace)90, var(--fondo-header)); /* Efecto degradado */
+}
+
+header h1 {
+    font-size: 4rem;
+    font-family: 'Fira Code', monospace;
+    color: #00ffcc;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    position: relative;
+    z-index: 1;
+}
+
+header h1 span {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(0, 255, 204, 0.134), transparent);
+    animation: shine 30s infinite;
+}
+
+header:hover {
+    background: linear-gradient(120deg, rgba(90, 206, 183, 0.629), rgba(0, 255, 204, 0.134), transparent);
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 0%;
+    }
+    100% {
+        left: -100%;
+    }
 }
 
 .navegacion-principal {
     z-index: 1;
     width: 100%;
-    background-color: #1a1a1a; /* Fondo oscuro */
+    background-color: var(--fondo-header); /* Fondo oscuro */
     display: flex;
     justify-content: space-around; /* Espacio entre los elementos */
     align-items: center; /* Alinear verticalmente */
     position: sticky;
     top: 0;
-    margin: 0;
-    border-bottom: 2px solid #00ffcc; /* Borde inferior cian brillante */
+    margin: 1px;
+    border-bottom: 2px solid var(--color-borde); /* Borde inferior cian brillante */
     font-family: 'Fira Code', monospace; /* Fuente tecnológica */
     padding: 10px; /* Espacio interno */
 }
@@ -44,7 +104,7 @@ body {
     display: none;
     background: none;
     border: none;
-    color: #00ffcc;
+    color: var(--color-enlace);
     font-size: 24px;
     cursor: pointer;
 }
@@ -63,20 +123,32 @@ body {
 .nav-list a {
     padding: 10px 20px; /* Espacio alrededor del texto */
     text-decoration: none;
-    color: #00ffcc; /* Color de enlace cian brillante */
+    color: var(--color-enlace); /* Color de enlace cian brillante */
     border: 2px solid transparent; /* Sin borde inicialmente */
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-list a:hover {
-    background-color: #00ffcc; /* Fondo cian al pasar el mouse */
-    color: #1a1a1a; /* Texto oscuro en hover */
-    border-color: #00ffcc; /* Bordes cian en hover */
+    background-color: var(--color-enlace); /* Fondo cian al pasar el mouse */
+    color: var(--fondo-header); /* Texto oscuro en hover */
+    border-color: var(--color-enlace); /* Bordes cian en hover */
 }
 
 @media (max-width: 480px) {
+    
+    header span{
+        display: flex;
+        flex-direction: column;
+        font-size: 3rem;
+        padding-bottom: 20px;
+    }
+    
+    header h1{
+        font-size: 3rem;
+    }
+    
     .navegacion-principal {
-        justify-content:space-between; /* Espacio entre los elementos */
+        justify-content: space-between; /* Espacio entre los elementos */
         position: relative;
     }
 
@@ -91,7 +163,7 @@ body {
         position: absolute;
         top: 60px; /* Ajustar según la altura del botón */
         left: 0;
-        background-color: #1a1a1a;
+        background-color: var(--fondo-header);
     }
 
     .nav-list.show {
@@ -104,30 +176,20 @@ body {
     }
 }
 
-
-
-h1 {
-    font-size: 2rem;
-    text-align: center;
-}
-
-h1 span {
-    font-size: 1rem;
-}
-
-.hero{
-    padding-block: 60px;
-    background-image: url(../img/background-title.jpeg);
+.hero {
+    padding-block: 120px;
+    background-image: url(../img/background-title1.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0%;
     position: relative;
 }
 
-.contenido-hero{
+.contenido-hero {
     position: absolute;
     padding: 1px; /* fix borde */
-    background: linear-gradient(to bottom, rgba(19, 19, 19, 0.3) 40%, rgb(19, 19, 19) 100%);top: 0%;
+    background: linear-gradient(to bottom, rgba(19, 19, 19, 0.3) 40%, rgb(19, 19, 19) 100%);
+    top: 0%;
     left: 0%;
     width: 100%;
     height: 100%;
@@ -137,12 +199,11 @@ h1 span {
     justify-content: center;
 }
 
-.contenido-hero h2{
-    color: #FFFFFF;
+.contenido-hero h2 {
+    color: var(--blanco);
     padding-inline: 10px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7); /* Sombra suave con transparencia */
 }
-
-
 
 main {
     max-width: 1200px;
@@ -152,7 +213,7 @@ main {
 }
 
 main h2 {
-    color: #00ffcc; /* Color cian brillante */
+    color: var(--color-enlace); /* Color cian brillante */
     font-family: 'Fira Code', monospace; /* Fuente tecnológica */
     margin-bottom: 5px;
 }
@@ -170,9 +231,9 @@ main .services-container {
 }
 
 main section {
-    background-color: #1a1a1a; /* Fondo oscuro */
-    color: #00ffcc; /* Texto cian brillante */
-    border: 2px solid #00ffcc; /* Borde cian */
+    background-color: var(--fondo-header); /* Fondo oscuro */
+    color: var(--color-enlace); /* Texto cian brillante */
+    border: 2px solid var(--color-borde); /* Borde cian */
     padding: 20px;
     margin: 10px;
     border-radius: 8px; /* Bordes redondeados */
@@ -199,7 +260,6 @@ main section p {
     margin: 0; /* Quitar margen para mejor ajuste */
 }
 
-
 main section:hover {
     transform: translateY(-5px); /* Efecto hover */
 }
@@ -224,42 +284,38 @@ main section:hover {
     }
 }
 
-
-
-
-
 .boton {
     display: inline-block;
     padding: 10px 20px; /* Tamaño más pequeño */
-    background-color: #1a1a1a; /* Color oscuro */
-    color: #00ffcc; /* Color del texto */
+    background-color: var(--fondo-header); /* Color oscuro */
+    color: var(--color-enlace); /* Color del texto */
     text-align: center;
     text-decoration: none;
     font-size: 14px; /* Fuente más pequeña */
     border-radius: 4px;
-    border: 2px solid #00ffcc; /* Borde cian brillante */
+    border: 2px solid var(--color-borde); /* Borde cian brillante */
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     font-family: 'Fira Code', monospace; /* Fuente moderna con estilo tecnológico */
 }
 
 .boton:hover {
-    background-color: #00ffcc; /* Cambia el fondo en hover */
-    color: #1a1a1a; /* Texto oscuro en hover */
-    border-color: #00ffcc;
+    background-color: var(--color-enlace); /* Cambia el fondo en hover */
+    color: var(--fondo-header); /* Texto oscuro en hover */
+    border-color: var(--color-borde);
 }
 
 .boton:active {
-    background-color: #1a1a1a; 
-    color: #00ffcc;
+    background-color: var(--fondo-header);
+    color: var(--color-enlace);
     transform: scale(0.97); /* Sutil efecto de clic */
 }
 
 footer {
-    background-color: #1a1a1a; /* Fondo oscuro */
-    color: #eeeeee; /* Texto en gris claro */
+    background-color: var(--fondo-header); /* Fondo oscuro */
+    color: var(--color-texto); /* Texto en gris claro */
     padding: 20px;
     text-align: center;
-    border-top: 2px solid #00ffcc; /* Borde superior cian brillante */
+    border-top: 2px solid var(--color-borde); /* Borde superior cian brillante */
     font-family: 'Fira Code', monospace; /* Fuente tecnológica */
 }
 
@@ -270,7 +326,7 @@ footer form {
 }
 
 footer fieldset {
-    border: 2px solid #00ffcc; /* Borde cian */
+    border: 2px solid var(--color-borde); /* Borde cian */
     border-radius: 8px; /* Bordes redondeados */
     padding: 20px;
     width: 100%;
@@ -283,17 +339,16 @@ footer legend {
     top: -12px; /* Ajustar según el tamaño del borde */
     left: 50%;
     transform: translateX(-50%); /* Centrar horizontalmente */
-    background-color: #1a1a1a; /* Fondo del borde */
+    background-color: var(--fondo-header); /* Fondo del borde */
     padding: 0 10px; /* Espacio alrededor del texto */
     font-size: 18px; /* Tamaño de fuente mayor para el encabezado */
-    color: #00ffcc; /* Color de texto cian brillante */
+    color: var(--color-enlace); /* Color de texto cian brillante */
     text-align: center; /* Centrar el texto */
 }
 
-
 footer .instructions {
     margin-bottom: 15px;
-    color: #eeeeee; /* Texto en gris claro */
+    color: var(--color-texto); /* Texto en gris claro */
     font-size: 16px; /* Tamaño de fuente adecuado */
 }
 
@@ -305,7 +360,7 @@ footer div {
 footer label {
     display: block;
     margin-bottom: 5px;
-    color: #00ffcc; /* Color de texto cian brillante */
+    color: var(--color-enlace); /* Color de texto cian brillante */
 }
 
 footer input[type="text"],
@@ -314,10 +369,10 @@ footer input[type="email"],
 footer textarea {
     width: 100%;
     padding: 10px;
-    border: 2px solid #00ffcc; /* Borde cian */
+    border: 2px solid var(--color-borde); /* Borde cian */
     border-radius: 4px; /* Bordes redondeados */
-    background-color: #212121; /* Fondo oscuro */
-    color: #eeeeee; /* Texto en gris claro */
+    background-color: var(--oscuro); /* Fondo oscuro */
+    color: var(--color-texto); /* Texto en gris claro */
     font-family: 'Fira Code', monospace; /* Fuente tecnológica */
 }
 
@@ -326,8 +381,8 @@ footer textarea {
 }
 
 footer input[type="submit"] {
-    background-color: #00ffcc; /* Fondo cian */
-    color: #1a1a1a; /* Texto oscuro */
+    background-color: var(--color-enlace); /* Fondo cian */
+    color: var(--fondo-header); /* Texto oscuro */
     border: none;
     padding: 10px 20px;
     border-radius: 4px; /* Bordes redondeados */
@@ -337,97 +392,10 @@ footer input[type="submit"] {
 }
 
 footer input[type="submit"]:hover {
-    background-color: #00b3a6; /* Fondo cian más oscuro al pasar el mouse */
+    background-color: var(--color-enlace-hover); /* Fondo cian más oscuro al pasar el mouse */
 }
 
 footer p {
     margin-top: 20px;
     font-size: 14px;
-}
-
-header {
-    background-color: #1a1a1a; /* Fondo inicial oscuro */
-    text-align: center;
-    padding: 50px 20px;
-    border-bottom: 4px solid #00ffcc;
-    position: relative;
-    overflow: hidden;
-    transition: background 1.5s ease-in-out; /* Animación más lenta */
-}
-
-header:hover {
-    background: linear-gradient(135deg, #00ffcc90, #1a1a1a); /* Efecto degradado */
-}
-
-header h1 {
-    font-size: 4rem; /* Ajustado para que no domine el texto */
-    font-family: 'Fira Code', monospace;
-    color: #00ffcc;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    position: relative;
-    z-index: 1;
-    animation: text-glow 1.5s ease-in-out infinite alternate;
-}
-
-header h1 span {
-    font-size: 2rem; /* Tamaño mayor pero no más llamativo que "Web Developer" */
-    color: #ffffff;
-    /* animation: glow 0.1s ease-in-out infinite alternate; */
-    /* transition: transform 0.0s ease-in-out; */
-}
-
-header h1:hover span {
-    transform: scale(1.05); /* Efecto sutil al pasar el mouse sobre el nombre */
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -50%;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(0, 255, 204, 0.134), transparent); 
-    animation: shine 30s infinite;
-}
-
-@keyframes text-glow {
-    from {
-        text-shadow: 0 0 0px #00ffcc, 0 0 0px #00ffcc, 0 0 0px #00ffcc;
-    }
-    to {
-        text-shadow: 0 0 0px #00ffcc, 0 0 0px #00ffcc, 0 0 0px #00ffcc;
-    }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
-    }
-    to {
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 25px #ffffff;
-    }
-}
-
-@keyframes shine {
-    0% {
-        left: -50%;
-    }
-    50% {
-        left: 50%;
-    }
-    100% {
-        left: -50%;
-    }
-}
-
-header h1:hover {
-    color: #ffffff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-header h1:hover span {
-    color: #00ffcc;
 }

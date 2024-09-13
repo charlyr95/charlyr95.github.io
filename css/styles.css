@@ -21,12 +21,14 @@ html {
     color: rgb(214, 214, 214);
     text-align: center;
     user-select: none; /* Deshabilitar selección de texto */
+    scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
 body {
     font-size: 16px;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Eliminar el scroll horizontal */
 }
 
 header {
@@ -398,4 +400,43 @@ footer input[type="submit"]:hover {
 footer p {
     margin-top: 20px;
     font-size: 14px;
+}
+
+/* Estilos para la barra de desplazamiento en Webkit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fondo-header); /* Fondo de la pista de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados de la pista */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-enlace); /* Color del pulgar de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados del pulgar */
+    transition: background 0.3s ease; /* Transición suave */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-enlace-hover); /* Color del pulgar al pasar el mouse */
+}
+
+/* Estilos para la barra de desplazamiento en Firefox */
+scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+scrollbar-track {
+    background: var(--fondo-header); /* Fondo de la pista de desplazamiento */
+}
+
+scrollbar-thumb {
+    background: var(--color-enlace); /* Color del pulgar de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados del pulgar */
+    transition: background 0.3s ease; /* Transición suave */
+}
+
+scrollbar-thumb:hover {
+    background: var(--color-enlace-hover); /* Color del pulgar al pasar el mouse */
 }

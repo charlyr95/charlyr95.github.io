@@ -148,6 +148,10 @@ header:hover {
     header h1{
         font-size: 3rem;
     }
+
+    header:hover {
+        background: linear-gradient(120deg, transparent, rgba(0, 255, 204, 0.134), transparent);
+    }
     
     .navegacion-principal {
         justify-content: space-between; /* Espacio entre los elementos */
@@ -413,13 +417,14 @@ footer p {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-enlace); /* Color del pulgar de desplazamiento */
+    background: #6aa19d2c; /* Color del pulgar de desplazamiento */
     border-radius: 10px; /* Bordes redondeados del pulgar */
-    transition: background 0.3s ease; /* Transición suave */
+    transition: background 1.3s; /* Transición suave */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-enlace-hover); /* Color del pulgar al pasar el mouse */
+    background: var(--color-enlace); /* Color del pulgar al pasar el mouse */
+    cursor: pointer;
 }
 
 /* Estilos para la barra de desplazamiento en Firefox */
@@ -432,7 +437,7 @@ scrollbar-track {
 }
 
 scrollbar-thumb {
-    background: var(--color-enlace); /* Color del pulgar de desplazamiento */
+    background: #6aa19d2c; /* Color del pulgar de desplazamiento */
     border-radius: 10px; /* Bordes redondeados del pulgar */
     transition: background 0.3s ease; /* Transición suave */
 }

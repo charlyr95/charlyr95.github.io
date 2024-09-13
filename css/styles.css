@@ -14,6 +14,7 @@ html {
     color: rgb(214, 214, 214);
     text-align: center;
     box-sizing: border-box;
+    user-select: none; /* Deshabilitar selección de texto */
 }
 
 *, *:before, *:after {
@@ -352,7 +353,6 @@ header {
     position: relative;
     overflow: hidden;
     transition: background 1.5s ease-in-out; /* Animación más lenta */
-    user-select: none; /* Deshabilitar selección de texto */
 }
 
 header:hover {
